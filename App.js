@@ -1,25 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Test push commit</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "tomato" }}></View>
+      <View style={{ flex: 2, backgroundColor: "teal" }}></View>
+      <View style={{ flex: 1, backgroundColor: "orange" }}></View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontSize: 28,
-    color: "black",
-  },
-});
