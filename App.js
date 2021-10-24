@@ -43,31 +43,39 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.city}>
-        <Text style={styles.cityName}>{city}</Text>
-      </View>
-      <ScrollView
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.weather}
-      >
-        {days.length === 0 ? (
-          <View style={styles.day}>
-            <ActivityIndicator color="white" size="large" />
+      {success ? (
+        <>
+          <View style={styles.city}>
+            <Text style={styles.cityName}>{city}</Text>
           </View>
-        ) : (
-          days.map((day, index) => (
-            <View key={index} style={styles.day}>
-              <Text style={styles.temp}>
-                {parseFloat(day.temp.day).toFixed(1)}
-              </Text>
-              <Text style={styles.description}>{day.weather[0].main}</Text>
-              <Text style={styles.tinyText}>{day.weather[0].description}</Text>
-            </View>
-          ))
-        )}
-      </ScrollView>
+          <ScrollView
+            pagingEnabled
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.weather}
+          >
+            {days.length === 0 ? (
+              <View style={styles.day}>
+                <ActivityIndicator color="white" size="large" />
+              </View>
+            ) : (
+              days.map((day, index) => (
+                <View key={index} style={styles.day}>
+                  <Text style={styles.temp}>
+                    {parseFloat(day.temp.day).toFixed(1)}
+                  </Text>
+                  <Text style={styles.description}>{day.weather[0].main}</Text>
+                  <Text style={styles.tinyText}>
+                    {day.weather[0].description}
+                  </Text>
+                </View>
+              ))
+            )}
+          </ScrollView>
+        </>
+      ) : (
+        <Text>😥 Please allow to get location permission! 😥</Text>
+      )}
     </View>
   );
 }
